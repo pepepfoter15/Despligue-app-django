@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: django
-          image: pepepfoter15/django:9
+          image: pepepfoter15/django:15
           env:
             - name: HOST
               value: mariadb
