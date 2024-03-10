@@ -21,22 +21,22 @@ spec:
                 - name: mariadb
                   image: mariadb:10.5
                   env:
-                    - name: MYSQL_ROOT_PASSWORD
+                    - name: MARIADB_ROOT_PASSWORD
                       valueFrom:
                         secretKeyRef:
                             name: secret-mariadb
                             key: passwd_root
-                    - name: MYSQL_DATABASE
+                    - name: MARIADB_DATABASE
                       valueFrom:
                         configMapKeyRef:
                             name: cm-mariadb
                             key: bbdd_name
-                    - name: MYSQL_USER
+                    - name: MARIADB_USER
                       valueFrom:
                         configMapKeyRef:
                             name: cm-mariadb
                             key: bbdd_user
-                    - name: MYSQL_PASSWORD
+                    - name: MARIADB_PASSWORD
                       valueFrom:
                         secretKeyRef:
                             name: secret-mariadb
