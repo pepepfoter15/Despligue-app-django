@@ -6,55 +6,38 @@ metadata:
     app: django
     tier: frontend
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: django
-      tier: frontend
-  template:
-    metadata:
-      labels:
-        app: django
-        tier: frontend
-    spec:
-      containers:
-        - name: django
-          image: pepepfoter15/django:v1
-          env:
-            - name: HOST
-              value: mariadb
-            - name: BD
-              valueFrom:
-                configMapKeyRef:
-                  name: cm-mariadb
-                  key: bbdd_name
-            - name: PASSWD
-              valueFrom:
-                secretKeyRef:
-                  name: secret-mariadb
-                  key: passwd_user
-            - name: USER
-              valueFrom:
-                configMapKeyRef:
-                  name: cm-mariadb
-                  key: bbdd_user
-            - name: DJANGO_SUPERUSER_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: secret-mariadb
-                  key: django_password
-            - name: DJANGO_SUPERUSER_USERNAME
-              valueFrom:
-                configMapKeyRef:
-                  name: cm-mariadb
-                  key: django_user
-            - name: DJANGO_SUPERUSER_EMAIL
-              valueFrom:
-                configMapKeyRef:
-                  name: cm-mariadb
-                  key: django_email
-            - name: ALLOWED_HOSTS
-              value: "*"
-          ports:
-            - containerPort: 8000
-              name: django
+    replicas: 1
+    selector:
+        matchLabels:
+            app: django
+            tier: frontend
+    template:
+        metadata:
+            labels:
+                app: django
+                tier: frontend
+        spec:
+            containers:
+                - name: django
+                  image: pepepfoter15/django:v1
+                  env:
+                    - name: HOST
+                      value: mariadb
+                    - name: BD
+                      valueFrom:
+                        configMapKeyRef:
+                          name: cm-mariadb
+                          key: bbdd_name
+                    - name: PASSWD
+                      valueFrom:
+                        secretKeyRef:
+                          name: secret-mariadb
+                          key: passwd_user
+                    - name: USER
+                      valueFrom:
+                        configMapKeyRef:
+                          name: cm-mariadb
+                          key: bbdd_user
+                  ports:
+                    - containerPort: 6000
+                      name: django
