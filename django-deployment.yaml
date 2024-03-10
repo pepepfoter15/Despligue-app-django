@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: django
+  labels:
+    app: django
+    tier: frontend
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: django
+            tier: frontend
+    template:
+        metadata:
+            labels:
+                app: django
+                tier: frontend
+        spec:
+            containers:
+                - name: django
+                  image: pepepfoter15/django:v1
+                  env:
+                    - name: HOST
+                      value: mariadb
+                    - name: BASE_DATOS
+                      valueFrom:
+                        configMapKeyRef:
+                          name: cm-mariadb
+                          key: bbdd_name
+                    - name: CONTRA
+                      valueFrom:
+                        secretKeyRef:
+                          name: secret-mariadb
+                          key: passwd_user
+                    - name: USUARIO
+                      valueFrom:
+                        configMapKeyRef:
+                          name: cm-mariadb
+                          key: bbdd_user
+                  ports:
+                    - containerPort: 6000
+                      name: django

@@ -1,0 +1,8 @@
+apiVersion: v1
+data:
+  bd_name: django
+  bd_user: pepe
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: cm-mariadb

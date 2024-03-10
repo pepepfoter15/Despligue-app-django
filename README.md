@@ -1,1 +1,1 @@
-# prac-k8s
+# practica-kubernetes
