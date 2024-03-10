@@ -1,5 +1,7 @@
 apiVersion: v1
 data:
+  django_email: admin@admin.org
+  django_user: admin
   bbdd_name: django
   bbdd_user: django
 kind: ConfigMap
