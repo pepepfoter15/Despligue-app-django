@@ -39,5 +39,5 @@ spec:
                           name: cm-mariadb
                           key: bbdd_user
                   ports:
-                    - containerPort: 6000
+                    - containerPort: 8000
                       name: django
